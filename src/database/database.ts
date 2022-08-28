@@ -7,11 +7,13 @@ export interface DbMethods {
 	modifyOne: (newOne: Types.SayingEssential) => void;
 }
 
-export class DbMethodsPostgres implements DbMethods {
+export class DbMethodsInMemory implements DbMethods {
 	private database: Types.SayingEntity[];
+	private idCounter: number;
 
 	constructor() {
 		this.database = [];
+		this.idCounter = 0;
 	}
 
 	public getAll() {
@@ -25,6 +27,7 @@ export class DbMethodsPostgres implements DbMethods {
 
 	public addOne(one: Types.SayingEssential) {
 		const moment = new Date();
+		one._id = String(++this.idCounter);
 		this.database.push({ ...one, createdDate: moment, modifiedDate: moment });
 	}
 
