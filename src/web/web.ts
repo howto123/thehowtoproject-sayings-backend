@@ -28,15 +28,14 @@ export function getEndpoints(
 	});
 
 	// create
-	app.post('/create', (req, res) => {
+	app.post('/create', async (req, res) => {
 		try {
 			const body = req.body;
 			const sayingEssential: Types.SayingEssential = validate(
 				'create',
 				body as Types.Validatable,
 			);
-			console.log(sayingEssential);
-			const list = dbLogic.createSaying(sayingEssential);
+			const list = await dbLogic.createSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem in create endpoint');
@@ -45,15 +44,11 @@ export function getEndpoints(
 	});
 
 	// read
-	app.get('/read', (req, res) => {
+	app.get('/read', async (req, res) => {
 		try {
 			const body = req.body;
-			const sayingEssential: Types.SayingEssential = validate(
-				'read',
-				body as Types.Validatable,
-			);
-			console.log(sayingEssential);
-			const list = dbLogic.readAllSayings();
+			validate('read', body as Types.Validatable);
+			const list = await dbLogic.readAllSayings();
 			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem with in read endpoint');
@@ -62,15 +57,14 @@ export function getEndpoints(
 	});
 
 	// update
-	app.get('/update', (req, res) => {
+	app.get('/update', async (req, res) => {
 		try {
 			const body = req.body;
 			const sayingEssential: Types.SayingEssential = validate(
 				'update',
 				body as Types.Validatable,
 			);
-			console.log(sayingEssential);
-			const list = dbLogic.updateSaying(sayingEssential);
+			const list = await dbLogic.updateSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem with update in endpoint');
@@ -79,15 +73,14 @@ export function getEndpoints(
 	});
 
 	// delete
-	app.get('/delete', (req, res) => {
+	app.get('/delete', async (req, res) => {
 		try {
 			const body = req.body;
 			const sayingEssential: Types.SayingEssential = validate(
 				'delete',
 				body as Types.Validatable,
 			);
-			console.log(sayingEssential);
-			const list = dbLogic.deleteSaying(sayingEssential);
+			const list = await dbLogic.deleteSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem in delete endpoint');

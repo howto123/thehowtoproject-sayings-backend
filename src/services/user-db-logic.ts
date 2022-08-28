@@ -1,10 +1,10 @@
 import * as Types from '../types/typeindex';
 
 export interface UserDbInterface {
-	readAllSayings(): Types.SayingEssential[];
-	createSaying(saying: Types.SayingEssential): Types.SayingEssential[];
-	updateSaying(saying: Types.SayingEssential): Types.SayingEssential[];
-	deleteSaying(saying: Types.SayingEssential): Types.SayingEssential[];
+	readAllSayings(): Promise<Types.SayingEssential[]>;
+	createSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
+	updateSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
+	deleteSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
 }
 export class UserDbLogic implements UserDbInterface {
 	private dbMethods: Types.DbMethods;
@@ -13,21 +13,21 @@ export class UserDbLogic implements UserDbInterface {
 		this.dbMethods = dbMethods;
 	}
 
-	public readAllSayings() {
-		return this.dbMethods.getAll();
+	public async readAllSayings() {
+		return await this.dbMethods.getAll();
 	}
 
-	public createSaying(saying: Types.SayingEssential) {
+	public async createSaying(saying: Types.SayingEssential) {
 		this.dbMethods.addOne(saying);
-		return this.dbMethods.getAll();
+		return await this.dbMethods.getAll();
 	}
 
-	public updateSaying(saying: Types.SayingEssential) {
+	public async updateSaying(saying: Types.SayingEssential) {
 		this.dbMethods.modifyOne(saying);
-		return this.dbMethods.getAll();
+		return await this.dbMethods.getAll();
 	}
-	public deleteSaying(saying: Types.SayingEssential) {
-		this.dbMethods.deleteById(saying._id);
-		return this.dbMethods.getAll();
+	public async deleteSaying(saying: Types.SayingEssential) {
+		await this.dbMethods.deleteById(saying._id);
+		return await this.dbMethods.getAll();
 	}
 }

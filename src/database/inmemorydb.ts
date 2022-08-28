@@ -9,7 +9,7 @@ export class DbMethodsInMemory implements Types.DbMethods {
 		this.idCounter = 0;
 	}
 
-	public getAll() {
+	public async getAll() {
 		return this.database.map((e) => ({
 			_id: e._id,
 			saying: e.saying,
@@ -33,7 +33,7 @@ export class DbMethodsInMemory implements Types.DbMethods {
 		};
 	}
 
-	public deleteById(id: Types.Identity) {
+	public async deleteById(id: Types.Identity) {
 		const index = this.database.findIndex((e) => e._id === id);
 		return this.database.splice(index, 1)[0];
 	}
