@@ -7,7 +7,8 @@ import dotenv from 'dotenv';
 import * as Web from './web/web';
 import { validate } from './services/validation';
 import { UserDbLogic } from './services/user-db-logic';
-import { DbMethodsInMemory } from './database/database';
+//import { DbMethodsInMemory } from './database/inmemorydb';
+import { DbMethodsPostgres } from './database/postgresdb';
 
 // settings
 dotenv.config();
@@ -17,7 +18,8 @@ const port = process.env.PORT;
 const app = Web.getApp();
 
 // create db object and expose its methods
-const dbMethods = new DbMethodsInMemory();
+const dbMethods = new DbMethodsPostgres();
+// const dbMethods = new DbMethodsInMemory(); -> change import as well
 
 // create a logic object and expose its methods
 const userDbLogic = new UserDbLogic(dbMethods);

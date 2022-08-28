@@ -1,13 +1,6 @@
 import * as Types from '../types/typeindex';
 
-export interface DbMethods {
-	getAll: () => Types.SayingEssential[];
-	addOne: (one: Types.SayingEssential) => void;
-	deleteById: (id: Types.Identity) => Types.SayingEssential;
-	modifyOne: (newOne: Types.SayingEssential) => void;
-}
-
-export class DbMethodsInMemory implements DbMethods {
+export class DbMethodsInMemory implements Types.DbMethods {
 	private database: Types.SayingEntity[];
 	private idCounter: number;
 
