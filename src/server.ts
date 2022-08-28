@@ -6,12 +6,15 @@
 import dotenv from 'dotenv';
 import * as Web from './web/web';
 import { validate } from './services/validation';
+import { UserDbLogic } from './services/user-db-logic';
 
 dotenv.config();
 const port = process.env.PORT;
 
 const app = Web.getApp();
-Web.getEndpoints(app, validate);
+const dbMethods = new DbMethods();
+const dbLogic = new UserDbLogic(dbMethods);
+Web.getEndpoints(app, validate, dbLogic);
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);

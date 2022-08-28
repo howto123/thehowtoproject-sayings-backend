@@ -6,9 +6,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+import * as Types from '../types/typeindex';
+
+/**
+ * Installs routes and endpoints using express
+ * @param app
+ * @param validate
+ * @param dbLogic
+ */
 export function getEndpoints(
 	app: express.Application,
-	validate: (toBeValidated: unknown) => boolean,
+	validate: (option: string, toBeValidated: Types.Validatable) => Types.SayingEssential,
+	dbLogic: Types.UserDbInterface,
 ) {
 	// set parsing
 	app.use(bodyParser.json());
@@ -21,12 +30,14 @@ export function getEndpoints(
 	// create
 	app.post('/create', (req, res) => {
 		try {
-			const { id, saying, author, topic } = req.body;
 			const body = req.body;
-			if (validate(body)) {
-				console.log(id, saying, author, topic);
-				res.status(200).send(body);
-			}
+			const sayingEssential: Types.SayingEssential = validate(
+				'create',
+				body as Types.Validatable,
+			);
+			console.log(sayingEssential);
+			const list = dbLogic.createSaying(sayingEssential);
+			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem in create endpoint');
 			console.log(err.message);
@@ -36,12 +47,14 @@ export function getEndpoints(
 	// read
 	app.get('/read', (req, res) => {
 		try {
-			const { id, saying, author, topic } = req.body;
 			const body = req.body;
-			if (validate(body)) {
-				console.log(id, saying, author, topic);
-				res.status(200).send(body);
-			}
+			const sayingEssential: Types.SayingEssential = validate(
+				'read',
+				body as Types.Validatable,
+			);
+			console.log(sayingEssential);
+			const list = dbLogic.readAllSayings();
+			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem with in read endpoint');
 			console.log(err.message);
@@ -51,12 +64,14 @@ export function getEndpoints(
 	// update
 	app.get('/update', (req, res) => {
 		try {
-			const { id, saying, author, topic } = req.body;
 			const body = req.body;
-			if (validate(body)) {
-				console.log(id, saying, author, topic);
-				res.status(200).send(body);
-			}
+			const sayingEssential: Types.SayingEssential = validate(
+				'update',
+				body as Types.Validatable,
+			);
+			console.log(sayingEssential);
+			const list = dbLogic.updateSaying(sayingEssential);
+			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem with update in endpoint');
 			console.log(err.message);
@@ -66,12 +81,14 @@ export function getEndpoints(
 	// delete
 	app.get('/delete', (req, res) => {
 		try {
-			const { id, saying, author, topic } = req.body;
 			const body = req.body;
-			if (validate(body)) {
-				console.log(id, saying, author, topic);
-				res.status(200).send(body);
-			}
+			const sayingEssential: Types.SayingEssential = validate(
+				'delete',
+				body as Types.Validatable,
+			);
+			console.log(sayingEssential);
+			const list = dbLogic.deleteSaying(sayingEssential);
+			res.status(200).send(list);
 		} catch (err) {
 			res.status(505).send('problem in delete endpoint');
 			console.log(err.message);
