@@ -4,6 +4,7 @@
   "description": "Backend for \"sayings\" webapp.",
   "main": "dist/server.js",
   "scripts": {
+    "start": "tsc && node ./dist/server.js",
     "test": "test",
     "tsc": "tsc",
     "watch": "concurrently -k \"tsc -w\"  \"nodemon\"",
