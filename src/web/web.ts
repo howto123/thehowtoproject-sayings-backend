@@ -25,7 +25,7 @@ export function getEndpoints(
 
 	// cors options
 	const corsOptions = {
-		origin: 'localhost:3000',
+		origin: '*',
 		optionsSuccessStatus: 200,
 	};
 	app.use(cors(corsOptions));
