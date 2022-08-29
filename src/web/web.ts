@@ -67,7 +67,7 @@ export function getEndpoints(
 	});
 
 	// update
-	app.get('/update', async (req, res) => {
+	app.post('/update', async (req, res) => {
 		try {
 			const body = req.body;
 			const sayingEssential: Types.SayingEssential = validate(
@@ -83,7 +83,7 @@ export function getEndpoints(
 	});
 
 	// delete
-	app.get('/delete', async (req, res) => {
+	app.post('/delete', async (req, res) => {
 		try {
 			const body = req.body;
 			const sayingEssential: Types.SayingEssential = validate(
