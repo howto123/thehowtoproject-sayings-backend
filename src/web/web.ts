@@ -24,11 +24,13 @@ export function getEndpoints(
 	app.use(bodyParser.json());
 
 	// cors options
+	/*
 	const corsOptions = {
 		origin: 'http://localhost:3000',
 		optionsSuccessStatus: 200,
 	};
-	app.use(cors(corsOptions));
+	*/
+	app.use(cors());
 
 	// first get
 	app.get('/', (req: express.Request, res: express.Response) => {
