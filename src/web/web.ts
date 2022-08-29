@@ -5,6 +5,7 @@
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import * as Types from '../types/typeindex';
 
@@ -21,6 +22,13 @@ export function getEndpoints(
 ) {
 	// set parsing
 	app.use(bodyParser.json());
+
+	// cors options
+	const corsOptions = {
+		origin: 'localhost:3000',
+		optionsSuccessStatus: 200,
+	};
+	app.use(cors(corsOptions));
 
 	// first get
 	app.get('/', (req: express.Request, res: express.Response) => {
