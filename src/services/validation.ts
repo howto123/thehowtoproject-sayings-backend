@@ -1,7 +1,7 @@
 import * as Types from '../types/typeindex';
 
 export interface Validatable {
-	id?: Types.Identity | undefined;
+	_id?: Types.Identity | undefined;
 	saying?: string | undefined;
 	author?: string | undefined;
 	topic?: string | undefined;
@@ -36,10 +36,10 @@ export function validate(option: string, toBeValidated: Types.Validatable): Type
 		};
 	}
 	if (option === 'update') {
-		const { id, saying, author, topic } = toBeValidated;
-		if (id && (saying || author || topic)) {
+		const { _id, saying, author, topic } = toBeValidated;
+		if (_id && (saying || author || topic)) {
 			return {
-				_id: id,
+				_id: _id,
 				saying: saying || '',
 				author: author || '',
 				topic: topic || '',
@@ -47,10 +47,10 @@ export function validate(option: string, toBeValidated: Types.Validatable): Type
 		}
 	}
 	if (option === 'delete') {
-		const { id } = toBeValidated;
-		if (id) {
+		const { _id } = toBeValidated;
+		if (_id) {
 			return {
-				_id: id,
+				_id: _id,
 				saying: '',
 				author: '',
 				topic: '',
