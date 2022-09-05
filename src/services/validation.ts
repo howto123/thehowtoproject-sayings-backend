@@ -1,3 +1,7 @@
+/**
+ * This file contains and exports functionality for (type) validation
+ */
+
 import * as Types from '../types/typeindex';
 
 export interface Validatable {
@@ -13,49 +17,51 @@ export interface Validatable {
  * @param toBeValidated
  * @returns
  */
-export function validate(option: string, toBeValidated: Types.Validatable): Types.SayingEssential {
-	if (option === 'create') {
-		// improve using JOI later
-		const { saying, author, topic } = toBeValidated;
-		if (saying && author && topic) {
-			return {
+export function validate(option: string, toBeValidated: any): Types.SayingEssential {
+	// define schema (for readability)
+	const schema = Types.SchemaSayingEssential;
+
+	// deconstruct args
+	const { _id, saying, author, topic } = toBeValidated;
+
+	// declare and build object, that can be validated
+	let modifiedObject: Types.Validatable;
+	switch (option) {
+		case 'create':
+			modifiedObject = {
 				_id: '',
 				saying: saying,
 				author: author,
 				topic: topic,
 			};
-		}
-	}
-	if (option === 'read') {
-		// reading is always allowed
-		return {
-			_id: '',
-			saying: '',
-			author: '',
-			topic: '',
-		};
-	}
-	if (option === 'update') {
-		const { _id, saying, author, topic } = toBeValidated;
-		if (_id && (saying || author || topic)) {
-			return {
+			break;
+		case 'read':
+			return;
+		case 'update':
+			modifiedObject = {
 				_id: _id,
 				saying: saying || '',
 				author: author || '',
 				topic: topic || '',
 			};
-		}
-	}
-	if (option === 'delete') {
-		const { _id } = toBeValidated;
-		if (_id) {
-			return {
+			break;
+		case 'delete':
+			modifiedObject = {
 				_id: _id,
 				saying: '',
 				author: '',
 				topic: '',
 			};
-		}
+			break;
+		default:
+			throw new Error('invalid validation option');
 	}
-	throw new Error('invalid option or invalid toBeValidated');
+
+	const validated = schema.validate(modifiedObject);
+	console.log(validated);
+	if (validated.error) {
+		throw new Error(validated.error.message);
+	}
+	// if no error, we return the value
+	return validated.value;
 }
