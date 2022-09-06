@@ -1,13 +1,22 @@
-export type Identity = string;
-import Joi from 'joi';
-
 /**
  * This file contains schemas vor validation via joi as well as types related
  * to the saying entity.
  */
 
+import Joi from 'joi';
+
 /**
  * Interface for the members that the user sees
+ */
+export type Identity = string;
+
+/**
+ * Schema corresponding to the type Identity
+ */
+export const SchemaId = Joi.string().uuid({ version: 'uuidv4' }).required();
+
+/**
+ * Objecttype that is visible in the browser and important for the actions available to the user
  */
 export interface SayingEssential {
 	_id: Identity;

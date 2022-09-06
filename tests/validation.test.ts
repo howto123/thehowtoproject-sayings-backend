@@ -44,7 +44,6 @@ describe('tests validate with option create', () => {
 	test('Wrong key', () => {
 		expect(() => validate('create', arr[1])).toThrow();
 	});
-
 	test('Id property is missing', () => {
 		expect(validate('create', arr[2])).toEqual(emptyObj);
 	});
@@ -53,5 +52,29 @@ describe('tests validate with option create', () => {
 	});
 	test('Puts in too many properties', () => {
 		expect(validate('create', arr[4])).toEqual(emptyObj);
+	});
+});
+
+describe('tests validate with option update', () => {
+	test('Valid: uuid, other fields empty', () => {
+		expect(validate('update', arr[0])._id).toEqual(arr[0]._id);
+	});
+	test('Id property is missing', () => {
+		expect(() => validate('update', arr[2])).toThrow();
+	});
+	test('Puts in number instead of string', () => {
+		expect(() => validate('update', arr[3])).toThrow();
+	});
+});
+
+describe('tests validate with option delete', () => {
+	test('Valid: uuid, other fields empty', () => {
+		expect(validate('delete', arr[0])._id).toEqual(arr[0]._id);
+	});
+	test('Id property is missing', () => {
+		expect(() => validate('delete', arr[2])).toThrow();
+	});
+	test('Puts in number instead of string', () => {
+		expect(() => validate('delete', arr[3])).toThrow();
 	});
 });

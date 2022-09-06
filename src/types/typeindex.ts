@@ -6,6 +6,7 @@ import {
 	Identity,
 	SayingEssential,
 	SayingEntity,
+	SchemaId,
 	SchemaSayingEssential,
 	SchemaSayingEntity,
 } from '../entities/saying';
@@ -17,6 +18,7 @@ export {
 	Identity,
 	SayingEssential,
 	SayingEntity,
+	SchemaId,
 	SchemaSayingEssential,
 	SchemaSayingEntity,
 	Validatable,

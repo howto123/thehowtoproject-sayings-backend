@@ -48,7 +48,7 @@ export function getEndpoints(
 			const list = await dbLogic.createSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
-			res.status(505).send('problem in create endpoint');
+			res.status(500).send('problem in create endpoint');
 			console.log(err.message);
 		}
 	});
@@ -61,7 +61,7 @@ export function getEndpoints(
 			const list = await dbLogic.readAllSayings();
 			res.status(200).send(list);
 		} catch (err) {
-			res.status(505).send('problem with in read endpoint');
+			res.status(500).send('problem with in read endpoint');
 			console.log(err.message);
 		}
 	});
@@ -77,7 +77,7 @@ export function getEndpoints(
 			const list = await dbLogic.updateSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
-			res.status(505).send('problem with update in endpoint');
+			res.status(500).send('problem with update in endpoint');
 			console.log(err.message);
 		}
 	});
@@ -93,7 +93,7 @@ export function getEndpoints(
 			const list = await dbLogic.deleteSaying(sayingEssential);
 			res.status(200).send(list);
 		} catch (err) {
-			res.status(505).send('problem in delete endpoint');
+			res.status(500).send('problem in delete endpoint');
 			console.log(err.message);
 		}
 	});
