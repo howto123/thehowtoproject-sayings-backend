@@ -2,7 +2,7 @@
  * This file contains and exports functionality for (type) validation
  */
 
-import * as Types from '../types/typeindex';
+import * as Types from '../imports/typeAndInterfaceIndex';
 
 export interface Validatable {
 	_id?: Types.Identity | undefined;

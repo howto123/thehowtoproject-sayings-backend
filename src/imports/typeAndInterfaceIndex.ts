@@ -12,7 +12,7 @@ import {
 } from '../entities/saying';
 import { Validatable } from '../services/validation';
 import { UserDbInterface, UserDbLogic } from '../services/user-db-logic';
-import { DbMethods } from '../database/dbinterface';
+import { DbMethods } from '../databaseAccess/dbinterface';
 
 export {
 	Identity,

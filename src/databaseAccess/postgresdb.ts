@@ -2,7 +2,7 @@ import { Client } from 'pg';
 import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
 
-import * as Types from '../types/typeindex';
+import * as Types from '../imports/typeAndInterfaceIndex';
 
 // Settings
 dotenv.config();

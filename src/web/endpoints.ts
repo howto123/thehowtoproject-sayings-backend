@@ -7,7 +7,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import * as Types from '../types/typeindex';
+import * as Types from '../imports/typeAndInterfaceIndex';
 
 /**
  * Installs routes and endpoints using express

@@ -1,4 +1,4 @@
-import * as Types from '../types/typeindex';
+import * as Types from '../imports/typeAndInterfaceIndex';
 
 export class DbMethodsInMemory implements Types.DbMethods {
 	private database: Types.SayingEntity[];

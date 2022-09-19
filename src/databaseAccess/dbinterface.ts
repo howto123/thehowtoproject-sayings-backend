@@ -1,4 +1,4 @@
-import * as Types from '../types/typeindex';
+import * as Types from '../imports/typeAndInterfaceIndex';
 
 export interface DbMethods {
 	getAll: () => Promise<Types.SayingEssential[]>;

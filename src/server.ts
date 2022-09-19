@@ -4,11 +4,11 @@
  */
 
 import dotenv from 'dotenv';
-import * as Web from './web/web';
+import * as Web from './web/endpoints';
 import { validate } from './services/validation';
 import { UserDbLogic } from './services/user-db-logic';
 //import { DbMethodsInMemory } from './database/inmemorydb';
-import { DbMethodsPostgres } from './database/postgresdb';
+import { DbMethodsPostgres } from './databaseAccess/postgresdb';
 
 // settings
 dotenv.config();
