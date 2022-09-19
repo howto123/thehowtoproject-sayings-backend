@@ -4,9 +4,9 @@
  */
 
 import dotenv from 'dotenv';
-import * as Web from './web/endpoints';
+import * as Web from './web/express';
 import { validate } from './services/validation';
-import { UserDbLogic } from './services/user-db-logic';
+import { UserDbLogic } from './services/UserDbLogic';
 //import { DbMethodsInMemory } from './database/inmemorydb';
 import { DbMethodsPostgres } from './databaseAccess/DbMethodsPostgres';
 

@@ -18,7 +18,7 @@ import * as Types from '../imports/typeAndInterfaceIndex';
 export function getEndpoints(
 	app: express.Application,
 	validate: (option: string, toBeValidated: Types.Validatable) => Types.SayingEssential,
-	dbLogic: Types.UserDbInterface,
+	dbLogic: Types.UserDbLogic,
 ) {
 	// set parsing
 	app.use(bodyParser.json());

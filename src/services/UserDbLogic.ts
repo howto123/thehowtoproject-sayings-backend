@@ -1,12 +1,6 @@
 import * as Types from '../imports/typeAndInterfaceIndex';
 
-export interface UserDbInterface {
-	readAllSayings(): Promise<Types.SayingEssential[]>;
-	createSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
-	updateSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
-	deleteSaying(saying: Types.SayingEssential): Promise<Types.SayingEssential[]>;
-}
-export class UserDbLogic implements UserDbInterface {
+export class UserDbLogic {
 	private dbMethods: Types.DbMethods;
 
 	constructor(dbMethods: Types.DbMethods) {
