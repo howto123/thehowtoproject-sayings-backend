@@ -8,7 +8,7 @@ import * as Web from './web/endpoints';
 import { validate } from './services/validation';
 import { UserDbLogic } from './services/user-db-logic';
 //import { DbMethodsInMemory } from './database/inmemorydb';
-import { DbMethodsPostgres } from './databaseAccess/postgresdb';
+import { DbMethodsPostgres } from './databaseAccess/DbMethodsPostgres';
 
 // settings
 dotenv.config();
