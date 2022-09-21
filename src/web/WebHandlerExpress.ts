@@ -22,7 +22,7 @@ export class WebHandlerExpress {
 	public async getEndpointsAndStartServer() {
 		this.expressApp = express();
 		this.getEndpoints();
-		this.startServer();
+		await this.startServer();
 	}
 
 	public async stopServer() {
@@ -33,14 +33,14 @@ export class WebHandlerExpress {
 		getEndpointsImported(this.expressApp, this.validate, this.userDbLogic);
 	}
 
-	private startServer() {
-		this.expressServer = this.expressApp.listen(this.port, () => {
+	private async startServer() {
+		this.expressServer = await this.expressApp.listen(this.port, () => {
 			console.log(`Example app listening on port ${this.port}`);
 		});
 	}
 
-	private stop() {
-		this.expressServer.close();
+	private async stop() {
+		await this.expressServer.close();
 		console.log('stopServer()');
 	}
 }
