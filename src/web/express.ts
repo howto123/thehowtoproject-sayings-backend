@@ -15,7 +15,7 @@ import * as Types from '../imports/typeAndInterfaceIndex';
  * @param validate
  * @param dbLogic
  */
-export function getEndpoints(
+export default function getEndpoints(
 	app: express.Application,
 	validate: (option: string, toBeValidated: Types.Validatable) => Types.SayingEssential,
 	dbLogic: Types.UserDbLogic,

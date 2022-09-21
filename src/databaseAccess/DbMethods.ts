@@ -5,4 +5,7 @@ export interface DbMethods {
 	addOne: (one: Types.SayingEssential) => void;
 	deleteById: (id: Types.Identity) => Promise<Types.SayingEssential>;
 	modifyOne: (newOne: Types.SayingEssential) => void;
+
+	connect(): Promise<void>;
+	disconnect(): Promise<void>;
 }

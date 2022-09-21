@@ -1,11 +1,10 @@
 import { describe, test, expect } from '@jest/globals';
+//import { App } from '../src/App';
 
-/*
-To be written...
+describe('DBLogic to DbMethods', () => {
+	// to be written
 
-describe('tests validate with option create', () => {
 	test('Valid: uuid, other fields empty', () => {
-		expect(validate('create', arr[0])).toEqual(emptyObj);
+		expect(true).toBeTruthy();
 	});
 });
-*/
