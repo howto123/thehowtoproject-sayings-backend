@@ -18,7 +18,7 @@ describe('constructor', () => {
 		expect(handler).toBeInstanceOf(WebHandlerExpress);
 	});
 
-	test('stopServer should exist', () => {
+	test('stopServer should exist', async () => {
 		// setup
 		const myfunct = () => 'hello';
 		const db = new DbMethodsInMemory();
@@ -28,18 +28,17 @@ describe('constructor', () => {
 		// assertions
 		expect.assertions(1);
 		expect(handler.stopServer).toBeDefined();
-		handler.stopServer();
 
 		// REVIEWER: functionality of this method is not tested -> how could this be done?"
 	});
 
-	test('Object members should be initialized', () => {
+	test('Object members should be initialized', async () => {
 		// setup
 		const myfunct = () => 'hello';
 		const db = new DbMethodsInMemory();
 		const logic = new UserDbLogic(db);
 		const handler = new WebHandlerExpress('3002', myfunct, logic);
-		handler.getEndpointsAndStartServer();
+		await handler.getEndpointsAndStartServer();
 
 		// assertions
 		expect.assertions(7);
@@ -53,6 +52,6 @@ describe('constructor', () => {
 		// https://bobbyhadz.com/blog/typescript-instanceof-only-refers-to-type-but-is-being-used-as-value
 		expect(handler.expressServer).toBeDefined();
 
-		handler.stopServer();
+		await handler.stopServer();
 	});
 });
