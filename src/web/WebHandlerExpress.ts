@@ -10,7 +10,7 @@ export class WebHandlerExpress {
 	validate: any;
 	userDbLogic: Types.UserDbLogic;
 	port: string;
-	expressApp: express.Application;
+	expressApp: any;
 	expressServer: any;
 
 	constructor(port: string, validate: any, userDbLogic: Types.UserDbLogic) {
